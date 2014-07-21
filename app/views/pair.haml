@@ -1,0 +1,16 @@
+- # coding: utf-8
+!= haml :_pair, :layout => false
+- content_for(:title, "#{@pair.id} - #{TITLE}")
+.likes
+  - if @pair.likes.empty?
+    友達に「似てるね！」と言っている人はまだいません。
+  - else
+    = "#{@pair.likes.size} 人の友達が「似てるね！」と言っています。"
+    %br
+    %ul
+    - @pair.likes.each do |like|
+      %li!=link_to like.account.screen_name, "/#{like.account.screen_name}"
+:javascript
+  $('.thing').each(function() {
+    format($(this), $(this).text());
+  });

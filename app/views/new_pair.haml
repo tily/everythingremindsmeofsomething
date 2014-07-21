@@ -1,0 +1,20 @@
+- # coding:utf-8
+%ul
+  - @pair.errors.messages.each do |message|
+    %li= message.last.last
+-form_for(@pair, "/pairs") do |f|
+  .item
+    .form
+      != f.text_field :a, :id => :a, :autocomplete => 'off', :value => @pair.a
+      != f.text_field :b, :id => :b, :autocomplete => 'off', :value => @pair.b
+    .pair
+      .thing-wrapper#a
+        .thing=@pair.a || '？？？'
+      .thing-wrapper#b
+        .thing=@pair.b || '？？？'
+      != Rack::Csrf.tag(env)
+    .button
+      != f.submit "✔ Create"
+:javascript
+  $('.thing').each(function() { format($(this), $(this).text()) });
+  $('.form input').keyup(keypress());

@@ -1,0 +1,81 @@
+body {
+  font-family: "HGS明朝E", "ＭＳ Ｐ明朝", "ヒラギノ明朝 Pro W3", "平成明朝",serif;
+}
+.container {
+  width: 920px;
+  margin: auto;
+}
+h1 {
+  font-size: 50px;
+  border-bottom: 5px solid black;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: blue;
+}
+img {
+  height: 200px;
+}
+.item {
+  border-bottom: 1px solid black;
+}
+.user {
+  border-bottom: 5px solid black;
+}
+.pair {
+  display: table;
+  height: 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.form {
+  display: table;
+}
+.form input {
+  display: table-cell;
+  width: 460px;
+  font-family: "HGS明朝E", "ＭＳ Ｐ明朝", "ヒラギノ明朝 Pro W3", "平成明朝",serif;
+  font-size: 50px;
+}
+.thing-wrapper {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 460px;
+  height: 200px;
+}
+.link {
+  text-align: right;
+  width: 920px;
+  padding-bottom: 10px;
+}
+.paginate {
+  text-align: center;
+  width: 920px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+.footer {
+  text-align: right;
+  width: 920px;
+}
+.button {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 100%;
+}
+.likes {
+  margin-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: solid black 1px;
+}

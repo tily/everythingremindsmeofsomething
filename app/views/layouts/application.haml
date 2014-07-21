@@ -1,0 +1,39 @@
+-# coding:utf-8
+%html
+  %head
+    %meta{:name=>'csrf-param',:content=>Rack::Csrf.field}
+    %meta{:name=>'csrf-token',:content=>Rack::Csrf.token(env)}
+    %title=yield_content(:title) || TITLE
+    !=javascript_include_tag :jquery
+    !=javascript_include_tag :rails
+    !=javascript_include_tag 'http://scripts.embed.ly/jquery.embedly.min.js'
+    !=javascript_include_tag :application
+    !=stylesheet_link_tag :application
+    :javascript
+      $(function() {
+        var remember = function() {
+          var thing = $("#remembered").val();
+          location.href = '/souvenirs/' + encodeURIComponent(thing);
+        };
+        $('#remember').click(remember);
+        $('#remembered').keypress(function(e) {
+          if(e.keyCode == 13) remember();
+        });
+      });
+  %body
+    .container
+      .link
+        %input{:id=>'remembered',:type=>'text'}
+        %button{:id=>'remember'}==Remember
+        - if current_account
+          !=link_to '⚡New', "/pairs/new"
+          |
+          !=link_to '❏ My Page', "/#{@current_account.screen_name}"
+          |
+          !=link_to '✖ Logout', '/logout'
+        - else
+          !=link_to "☮ Login", "/auth/twitter"
+      %h1!= link_to title, '/'
+      !=yield
+      .footer
+        ==&copy;「#{TITLE}」製作委員会

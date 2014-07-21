@@ -1,0 +1,16 @@
+ja:
+  mongoid:
+    errors:
+      messages:
+        validations: 'invalid'
+        document_not_found: '存在しませんでした。'
+      models:
+        pair:
+          attributes:
+            a:
+              too_long: 一番目は千文字以下で入力してください。 
+            b:
+              too_long: 二番目も千文字以下で入力してください。 
+            base:
+              must_be_different: '完全に同じふたつは登録できません。'
+              must_be_unique: '既に登録されています。'

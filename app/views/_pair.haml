@@ -1,0 +1,19 @@
+-#coding:utf-8
+.item
+  .pair
+    .thing-wrapper
+      .thing= @pair.a
+    .thing-wrapper
+      .thing= @pair.b
+  .link
+    != link_to "#{time_ago_in_words(@pair.created_at)} ago", "/pairs/#{@pair.id}"
+    by
+    != link_to @pair.account.screen_name, "/#{@pair.account.screen_name}"
+    |
+    - if current_account && @pair.account != current_account
+      - if @pair.likes.any? {|like| like.account == current_account }
+        != link_to '☟  Unlike', "/likes/#{@pair.id}", :method => :delete
+      - else
+        != link_to '✌  Like', "/likes/#{@pair.id}", :method => :post
+    - if can? :delete, @pair
+      != link_to '✞ Delete', "/pairs/#{@pair.id}", :method => :delete, :confirm => 'Are you sure?'

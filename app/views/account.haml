@@ -1,0 +1,19 @@
+-#coding:utf-8
+-content_for(:title, "#{@account.screen_name} - #{TITLE}")
+.user
+  .pair
+    .thing-wrapper
+      .thing="#{params[:screen_name]}"
+    .thing-wrapper
+      .thing=@account.name
+  -if can? :edit, @account
+    .link
+      != link_to '✍ Edit', "/#{params[:screen_name]}/edit"
+-@pairs.each do |pair|
+  -@pair = pair
+  !=haml :_pair, :layout => false
+!=haml :_paginate, :layout => false
+:javascript
+  $('.thing').each(function() {
+    format($(this), $(this).text());
+  });

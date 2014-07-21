@@ -1,0 +1,18 @@
+-# coding: utf-8
+- form_for(@account, "/#{@account.screen_name}", :method => :put) do |f|
+  .item
+    .form
+      !=f.text_field :hoge, :style => 'visibility: hidden'
+      !=f.text_field :name, :id => :b, :autocomplete => 'off'
+    .pair
+      .thing-wrapper#a
+        .thing=@account.screen_name
+      .thing-wrapper#b
+        .thing=@account.name || '(empty)'
+      != Rack::Csrf.tag(env)
+    .button
+      != f.submit "✔ Update"
+!=link_to("⇤Back", "/#{current_account.screen_name}")
+:javascript
+  $('.thing').each(function() { format($(this), $(this).text()) });
+  $('.form input').keyup(keypress());

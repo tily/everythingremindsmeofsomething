@@ -1,0 +1,11 @@
+- # coding:utf-8
+- @pairs.each_with_index do |pair, i|
+  -@pair = pair
+  -if @pair.b == @thing
+    -@pair.a, @pair.b = @pair.b, @pair.a
+  -if i != 0
+    -@pair.a = '〃'
+  !=haml :_pair, :layout => false
+!=haml :_paginate, :layout => false
+:javascript
+  $('.thing').each(function() { format($(this), $(this).text()) });
