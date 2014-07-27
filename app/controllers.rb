@@ -10,6 +10,13 @@ Ermos.controllers do
     haml :top
   end
 
+  # トップ (json)
+  get '/*.json' do
+    content_type 'text/json'
+    @pairs = Pair.desc(:created_at).page(params[:page])
+    @pairs.to_json
+  end
+
   # 連想
   get %r{/souvenirs/(.+)} do
     @thing = params[:captures].first
