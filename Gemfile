@@ -38,5 +38,3 @@ gem 'faker-japanese', :require => 'faker/japanese'
 gem 'rack-google-analytics', :require => "rack/google-analytics" 
 gem 'json'
 gem 'mongo-store'
-
-gem 'glitched_string'

@@ -26,14 +26,12 @@ Ermos.helpers do
   )
 
   def title
-    num = rand(3)
+    num = rand(2)
     text = rand(1000) == 0 ? POEMS.sample : Ermos::TITLE
     if num == 0
       unsearchablize(text)
-    elsif num == 1
-      unsearchablize2(text)
     else
-      text.glitch
+      unsearchablize2(text)
     end
   end
 
