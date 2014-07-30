@@ -11,9 +11,15 @@ Ermos.controllers do
   end
 
   # トップ (json)
-  get '/*.json' do
+  get '/:screen_name.json' do
     content_type 'text/json'
-    @pairs = Pair.desc(:created_at).page(params[:page])
+    if params[:screen_name] == '*'
+      @pairs = Pair.desc(:created_at).page(params[:page])
+    else
+      @account = Account.where(:screen_name => params[:screen_name]).first
+      halt 404 if @account.nil?
+      @pairs = @account.pairs.desc(:created_at).page(params[:page])
+    end
     @pairs.to_json
   end
 
