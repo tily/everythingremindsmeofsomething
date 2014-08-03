@@ -51,7 +51,7 @@ Ermos.controllers do
   # 個別 Pair
   get "/pairs/:id" do
     begin
-    @pair = Pair.find(params[:id])
+      @pair = Pair.find(params[:id])
     rescue Mongoid::Errors::DocumentNotFound => e
       halt 404
     end
