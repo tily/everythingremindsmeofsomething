@@ -38,3 +38,7 @@ gem 'faker-japanese', :require => 'faker/japanese'
 gem 'rack-google-analytics', :require => "rack/google-analytics" 
 gem 'json'
 gem 'mongo-store'
+
+group :development do
+  gem 'shotgun'
+end
